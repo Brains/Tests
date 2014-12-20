@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Android", "Android\Android.csproj", "{DCD55B68-3694-4394-8EC0-97CC116F4393}"
 EndProject
@@ -18,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test Driven Development", "Test Driven Development\Test Driven Development.csproj", "{F529B737-5407-4703-806B-3974A1F83307}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{CAE8824A-62DA-4942-B334-7CCCC2E64E3A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YAML", "YAML\YAML.csproj", "{528E23A1-A5CD-449A-9B3C-88A0C6E91B33}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{CAE8824A-62DA-4942-B334-7CCCC2E64E3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAE8824A-62DA-4942-B334-7CCCC2E64E3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAE8824A-62DA-4942-B334-7CCCC2E64E3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{528E23A1-A5CD-449A-9B3C-88A0C6E91B33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{528E23A1-A5CD-449A-9B3C-88A0C6E91B33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{528E23A1-A5CD-449A-9B3C-88A0C6E91B33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{528E23A1-A5CD-449A-9B3C-88A0C6E91B33}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

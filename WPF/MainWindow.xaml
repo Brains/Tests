@@ -4,7 +4,6 @@
         xmlns:System="clr-namespace:System;assembly=mscorlib" xmlns:SampleData="clr-namespace:Expression.Blend.SampleData.SampleDataSource" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" mc:Ignorable="d" x:Class="WPF.MainWindow"
         Title="MainWindow" Height="511" Width="705">
     <Window.Resources>
-        <SampleData:SampleDataSource x:Key="SampleDataSource" d:IsDataSource="True"/>
         <Style x:Key="RowStyle" TargetType="{x:Type DataGridRow}">
             <Setter Property="Margin" Value="5"/>
             <Setter Property="Foreground" Value="#FF1F6DCB"/>
@@ -218,9 +217,6 @@
         </ControlTemplate>
     </Window.Resources>
     <Grid Margin="0,0,41,0">
-        <!--	    <Grid.DataContext>-->
-        <!--	        <Binding Source="{StaticResource SampleDataSource}" />-->
-        <!--	    </Grid.DataContext>-->
         <ComboBox x:Name="Name" HorizontalAlignment="Left" Margin="139.5,37,0,0" VerticalAlignment="Top" Width="80" SelectedIndex="0" Style="{DynamicResource ComboBoxStyle}" FocusVisualStyle="{DynamicResource ControlStyle}" Template="{DynamicResource ComboBoxControlTemplate}" BorderBrush="Black" BorderThickness="1" 
                   ItemsSource="{Binding Path=UniqueSet}" 
                   SelectedValue="{Binding Path=Filter, Mode=OneWayToSource, NotifyOnSourceUpdated=True}"
@@ -232,8 +228,7 @@
                     <DataGridTemplateColumn.Header>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="ID" VerticalAlignment="Center"/>
-                            <Button Content="" Width="10" Style="{DynamicResource ButtonStyle}" 
-                                    Command="{Binding Path=DataContext.ClickCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"/>
+                            <Button Width="10" Style="{DynamicResource ButtonStyle}" Command="{Binding Path=DataContext.ClickCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"/>
                         </StackPanel>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>

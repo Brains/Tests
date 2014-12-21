@@ -21,16 +21,6 @@ namespace WPF
         private string filter;
 
         //------------------------------------------------------------------
-        public string Filter
-        {
-            get { return filter; }
-            set
-            {
-                filter = value; 
-                FilterList();
-            }
-        }
-
         public CommandDelegate <string> ClickCommand { get; set; }
         public List <DataEntry> Data { get; private set; }
 
@@ -38,6 +28,17 @@ namespace WPF
         public SortedSet <string> UniqueSet
         {
             get { return GetUniqueList(); }
+        }
+
+        //------------------------------------------------------------------
+        public string Filter
+        {
+            get { return filter; }
+            set
+            {
+                filter = value;
+                FilterList();
+            }
         }
 
         //------------------------------------------------------------------
@@ -64,8 +65,6 @@ namespace WPF
         //-------------------------------------------------------------------
         public void FilterList()
         {
-//          if (Data == null) return null;
-
             ICollectionView view = CollectionViewSource.GetDefaultView(Data);
 
             // Show all entries in Grid
@@ -75,7 +74,7 @@ namespace WPF
                 return;
             }
 
-            view.Filter = o => (o as DataEntry).Name == Filter;
+            view.Filter = entry => (entry as DataEntry).Name == Filter;
         }
 
         //-------------------------------------------------------------------

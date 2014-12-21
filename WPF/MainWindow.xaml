@@ -217,18 +217,26 @@
 			</ControlTemplate.Triggers>
 		</ControlTemplate>
 	</Window.Resources>
-	<Grid Margin="0,0,41,0" DataContext="{Binding Source={StaticResource SampleDataSource}}">
-		<ComboBox x:Name="Name" HorizontalAlignment="Left" Margin="139.5,37,0,0" VerticalAlignment="Top" Width="80" SelectedIndex="0" SelectionChanged="OnComboBoxSelectionChanged" Style="{DynamicResource ComboBoxStyle}" FocusVisualStyle="{DynamicResource ControlStyle}" Template="{DynamicResource ComboBoxControlTemplate}" BorderBrush="Black" BorderThickness="1">
-			<System:String>All</System:String>
-		</ComboBox>
-		<DataGrid x:Name="Grid" HorizontalAlignment="Left" Margin="30.667,83.667,0,0" VerticalAlignment="Top" Height="220" Width="424" AutoGenerateColumns="True" ItemsSource="{Binding Collection}" RowStyle="{DynamicResource RowStyle}" BorderThickness="0" GridLinesVisibility="None" RowHeaderStyle="{DynamicResource RowHeaderStyle}" ColumnHeaderStyle="{DynamicResource HeaderStyle}" >
-			<DataGrid.Columns>
+	<Grid Margin="0,0,41,0">
+<!--	    <Grid.DataContext>-->
+<!--	        <Binding Source="{StaticResource SampleDataSource}" />-->
+<!--	    </Grid.DataContext>-->
+	    <ComboBox x:Name="Name" HorizontalAlignment="Left" Margin="139.5,37,0,0" VerticalAlignment="Top" Width="80" SelectedIndex="0" Style="{DynamicResource ComboBoxStyle}" FocusVisualStyle="{DynamicResource ControlStyle}" Template="{DynamicResource ComboBoxControlTemplate}" BorderBrush="Black" BorderThickness="1" 
+                  ItemsSource="{Binding Path=UniqueSet}" 
+                  SelectedValue="{Binding Path=Filter, Mode=OneWayToSource, NotifyOnSourceUpdated=True}"
+                  IsSynchronizedWithCurrentItem ="True"
+                  />
+	    <DataGrid x:Name="Grid" HorizontalAlignment="Left" Margin="30.667,83.667,0,0" VerticalAlignment="Top" Height="220" Width="424" AutoGenerateColumns="True" ItemsSource="{Binding Collection}" RowStyle="{DynamicResource RowStyle}" BorderThickness="0" GridLinesVisibility="None" RowHeaderStyle="{DynamicResource RowHeaderStyle}" ColumnHeaderStyle="{DynamicResource HeaderStyle}" >
+<!--            <Button Content="{Binding Path=Filter}" Width="10" Style="{DynamicResource ButtonStyle}" Command="{Binding Path=ButtonClickCommandDekegate}"/>-->
+            <DataGrid.Columns>
 				  <DataGridTemplateColumn x:Name="userControlColumn">
                     <DataGridTemplateColumn.HeaderTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <Label Content="Sort" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Foreground="Gray"/>
-                                <Button Content="" Width="10" Style="{DynamicResource ButtonStyle}" />
+                                <Button Content="{Binding Path=Filter}" Width="10" Style="{DynamicResource ButtonStyle}" 
+                                        Command="{Binding Path=DataContext.ButtonClickCommandDelegate, RelativeSource={RelativeSource AncestorType=DataGrid}}" 
+                                        />
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.HeaderTemplate>

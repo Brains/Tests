@@ -28,8 +28,7 @@
             <ComboBox x:Name="Name" HorizontalAlignment="Left" VerticalAlignment="Center" Width="80" SelectedIndex="0" Style="{DynamicResource ComboBoxStyle}" FocusVisualStyle="{DynamicResource ControlStyle}" Template="{DynamicResource ComboBoxControlTemplate}" BorderBrush="Black" BorderThickness="1" 
             	ItemsSource="{Binding Path=UniqueSet}" 
             	SelectedValue="{Binding Path=Filter, Mode=OneWayToSource, NotifyOnSourceUpdated=True}"
-            	IsSynchronizedWithCurrentItem ="True">
-            </ComboBox>
+            	IsSynchronizedWithCurrentItem ="True" />
         </StackPanel>
 
     </Grid>

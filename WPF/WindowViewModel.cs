@@ -15,23 +15,23 @@ using WPF.Annotations;
 namespace WPF
 {
     //-------------------------------------------------------------------
-    public class WindowViewModel : INotifyPropertyChanged
+    public class WindowViewModel
     {
         private readonly Model model;
-        private CommandDelegate <string> buttonClickCommandDelegate;
+        private string filter;
 
         //------------------------------------------------------------------
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        //------------------------------------------------------------------
-        public string Filter { get; set; }
-
-        public CommandDelegate <string> ButtonClickCommandDelegate
+        public string Filter
         {
-            get { return buttonClickCommandDelegate; }
-            set { buttonClickCommandDelegate = value; }
+            get { return filter; }
+            set
+            {
+                filter = value; 
+                FilterList();
+            }
         }
 
+        public CommandDelegate <string> ClickCommand { get; set; }
         public List <DataEntry> Data { get; private set; }
 
         //------------------------------------------------------------------
@@ -46,7 +46,7 @@ namespace WPF
             model = new Model();
             Data = model.Data;
 
-            ButtonClickCommandDelegate = new CommandDelegate<string>(key => SortList());
+            ClickCommand = new CommandDelegate <string>(key => SortList());
         }
 
         //-------------------------------------------------------------------
@@ -65,36 +65,41 @@ namespace WPF
         public void FilterList()
         {
 //          if (Data == null) return null;
-            
+
             ICollectionView view = CollectionViewSource.GetDefaultView(Data);
 
             // Show all entries in Grid
-            if (Filter.ToString() == "All")
+            if (Filter == "All")
             {
                 view.Filter = null;
                 return;
             }
 
-           
             view.Filter = o => (o as DataEntry).Name == Filter;
         }
 
         //-------------------------------------------------------------------
         private void SortList()
         {
+            const string key = "Id";
+
             ICollectionView view = CollectionViewSource.GetDefaultView(Data);
-            
-            view.SortDescriptions.Clear();
-            view.SortDescriptions.Add(new SortDescription("Color", ListSortDirection.Ascending));
-        }
 
+            var descriptions = view.SortDescriptions;
 
-        //-------------------------------------------------------------------
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            var handler = PropertyChanged;
-            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
+            if (descriptions.Count > 0 && 
+                descriptions[0].Direction == ListSortDirection.Ascending)
+            {
+                // Already sorted ascending, replace to descending
+                descriptions.Clear();
+                descriptions.Add(new SortDescription(key, ListSortDirection.Descending));
+            }
+            else
+            {
+                // Sort ascending
+                descriptions.Clear();
+                descriptions.Add(new SortDescription(key, ListSortDirection.Ascending));
+            }
         }
     }
 }

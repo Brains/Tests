@@ -5,9 +5,9 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Simple Styles.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
+<!--            <ResourceDictionary.MergedDictionaries>-->
+<!--                <ResourceDictionary Source="Simple Styles.xaml"/>-->
+<!--            </ResourceDictionary.MergedDictionaries>-->
             <Style x:Key="RowStyle" TargetType="{x:Type DataGridRow}">
                 <Setter Property="Margin" Value="5"/>
                 <Setter Property="Foreground" Value="#FF1F6DCB"/>

@@ -74,7 +74,7 @@ namespace WPF
                 return;
             }
 
-            view.Filter = entry => (entry as DataEntry).Name == Filter;
+            view.Filter = entry => (entry as DataEntry).Name == filter;
         }
 
         //-------------------------------------------------------------------

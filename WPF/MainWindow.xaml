@@ -6,11 +6,12 @@
     <Grid Margin="0,0,41,0">
         <DataGrid x:Name="Grid" ItemsSource="{Binding Path=Data}" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="77,99,0,0" VerticalAlignment="Top" Height="307" Width="518" RowStyle="{DynamicResource RowStyle}" BorderThickness="0" GridLinesVisibility="None" RowHeaderStyle="{DynamicResource RowHeaderStyle}" ColumnHeaderStyle="{DynamicResource HeaderStyle}" CanUserAddRows="False">
             <DataGrid.Columns>
-                <DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="50">
                     <DataGridTemplateColumn.Header>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="ID" VerticalAlignment="Center"/>
-                            <Button Width="10" Style="{DynamicResource ButtonStyle}" Command="{Binding Path=DataContext.ClickCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"/>
+                            <TextBlock Text="ID" HorizontalAlignment="Center" VerticalAlignment="Center" Height="19"/>
+                            <Button Command="{Binding DataContext.ClickCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                            	Template="{StaticResource ButtonTemplate}" HorizontalAlignment="Center" Width="15" VerticalAlignment="Center" />
                         </StackPanel>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
@@ -19,8 +20,8 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn  Header="Name" Binding="{Binding Path=Name}"/>
-                <DataGridTextColumn Header="Color" Binding="{Binding Path=Color}"/>
+                <DataGridTextColumn  Header="Name" Binding="{Binding Path=Name}" Width="100"/>
+                <DataGridTextColumn Header="Color" Binding="{Binding Path=Color}" Width="100"/>
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="31" Margin="108,39,0,0" VerticalAlignment="Top" Width="134">
@@ -30,6 +31,5 @@
             	SelectedValue="{Binding Path=Filter, Mode=OneWayToSource, NotifyOnSourceUpdated=True}"
             	IsSynchronizedWithCurrentItem ="True" />
         </StackPanel>
-
     </Grid>
 </Window>

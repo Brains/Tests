@@ -5,9 +5,6 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
-<!--            <ResourceDictionary.MergedDictionaries>-->
-<!--                <ResourceDictionary Source="Simple Styles.xaml"/>-->
-<!--            </ResourceDictionary.MergedDictionaries>-->
             <Style x:Key="RowStyle" TargetType="{x:Type DataGridRow}">
                 <Setter Property="Margin" Value="5"/>
                 <Setter Property="Foreground" Value="#FF1F6DCB"/>
@@ -47,6 +44,7 @@
             <Style x:Key="ControlStyle" TargetType="{x:Type Control}">
                 <Setter Property="Background" Value="White"/>
             </Style>
+
             <ControlTemplate x:Key="ComboBoxControlTemplate" TargetType="{x:Type ComboBox}">
                 <Grid x:Name="templateRoot" SnapsToDevicePixels="True">
                     <Grid.ColumnDefinitions>
@@ -218,6 +216,12 @@
                         <Setter Property="Canvas.Left" TargetName="OpaqueRect" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}"/>
                     </Trigger>
                 </ControlTemplate.Triggers>
+            </ControlTemplate>
+            <ControlTemplate x:Key="ButtonTemplate">
+                <Grid>
+                    <Rectangle Width="7" Height="9" Fill="Transparent" Stroke="#FF999A9B" Margin="0"/>
+                    <Rectangle Width="7" Height="5" Fill="Transparent" Stroke="#FF999A9B" Margin="0"/>
+                </Grid>
             </ControlTemplate>
         </ResourceDictionary>
     </Application.Resources>

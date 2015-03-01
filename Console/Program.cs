@@ -1,13 +1,17 @@
 ﻿using System;
-//using System.Collections.Generic;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Reflection;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 
 
 internal class Program
@@ -18,7 +22,7 @@ internal class Program
 
         Test();
 
-        Console.ReadKey();
+        Console.ReadKey(true);
     }
 
     //------------------------------------------------------------------
@@ -39,5 +43,7 @@ internal class Program
     public static void Test()
     {
 
+
     }
 }
+

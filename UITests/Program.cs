@@ -10,7 +10,11 @@ using System.Threading;
 using TestStack.White;
 using TestStack.White.Factory;
 using TestStack.White.UIItems;
+using TestStack.White.UIItems.Finders;
+using TestStack.White.UIItems.ListBoxItems;
+using TestStack.White.UIItems.MenuItems;
 using TestStack.White.UIItems.WindowItems;
+using TestStack.White.UIItems.WPFUIItems;
 
 namespace UITests
 {
@@ -19,16 +23,20 @@ namespace UITests
 		private static void Main (string[] args)
 		{
 
-			Application application = Application.Launch("..\\..\\..\\WPF\\bin\\Debug\\WPF.exe");
+			Application application = Application.Launch("..\\..\\..\\WPF DataGrid\\bin\\Debug\\WPF.exe");
 			Window window = application.GetWindow("MainWindow", InitializeOption.NoCache);
 
-			Button button = window.Get<Button>("TestButton");
-			button.Click();
+			window.Get<ListView>("Grid").RightClick();
+			PopUpMenu popupMenu = window.Popup;
+			Menu level2Menu = popupMenu.Item("First", "InternalFirst");
+//			level2Menu = popupMenu.ItemBy(SearchCriteria.ByText("First"), SearchCriteria.ByText("InternalFirst"));
+			level2Menu.Click();
 
-			TextBox text = window.Get<TextBox>("TestTextBox");
-			Console.WriteLine(text.Text);
-
-			application.Close();
+			//			ListView grid = window.Get<ListView>("Grid");
+			//			var listItem = (WPFListItem)  grid.Get(SearchCriteria.ByText("Green"));
+			//			var textBox = listItem.Get<TextBox>(SearchCriteria.All);
+			//			textBox.Text = "Tested";
+						application.Close();
 		}
 
 		

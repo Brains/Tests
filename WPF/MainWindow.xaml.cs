@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,6 +24,19 @@ namespace WPF
 		public MainWindow ()
 		{
 			InitializeComponent();
+
+			var colors = typeof (SystemColors).GetProperties()
+				.Select(info =>
+			{
+				return new SolidColorBrush( (info.GetValue(null, null) as Color? ?? Colors.Red));
+			});
+
+			list.ItemsSource = colors;
 		}
+	}
+
+	struct Data
+	{
+		public Color Color { get; set; }
 	}
 }

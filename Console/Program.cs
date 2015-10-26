@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+using ConsoleProject;
 
 
 internal class Program
@@ -31,8 +32,11 @@ internal class Program
         Console.BackgroundColor = ConsoleColor.White;
         Console.ForegroundColor = ConsoleColor.DarkGray;
         Console.Clear();
-    }
 
+	
+			
+    }
+	
     //------------------------------------------------------------------
     public static void Out (string text)
     {
@@ -43,7 +47,9 @@ internal class Program
     public static void Test()
     {
 		// Fake commit
-
-    }
+		    
+		IReceiver receiver = new Receiver();
+		receiver.Receive(new ResponceMessage());
+	}
 }
 

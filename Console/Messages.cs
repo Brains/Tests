@@ -34,7 +34,7 @@ namespace ConsoleProject
 
 	internal interface IReceiver
 	{
-		void Receive(Message message);
+		void Receive<T>(T message) where T: Message;
 	}
 
 	internal class Receiver : IReceiver
@@ -43,12 +43,12 @@ namespace ConsoleProject
 		public Receiver()
 		{
 			handlers = new Dictionary<Type, Action<Message>>();
-			handlers.Add(typeof (MoveMessage),  message => Handle((MoveMessage) message) );
+			handlers.Add(typeof (MoveMessage),  message => Handle(message) );
 			handlers.Add(typeof (AnimationMessage),  message => Handle((AnimationMessage) message) );
 			handlers.Add(typeof (ResponceMessage),  message => Handle((ResponceMessage) message) );
         }
 
-		public void Receive(Message message)
+		public void Receive<T>(T message) where T : Message
 		{
 			handlers[message.GetType()](message);
 
@@ -62,6 +62,7 @@ namespace ConsoleProject
 //				Handle((AnimationMessage) message);
 		}
 
+		public void Handle<T>(T message) {}
 		public void Handle(MoveMessage message) {}
 		public void Handle(AnimationMessage message) {}
 		public void Handle(ResponceMessage message) {}
